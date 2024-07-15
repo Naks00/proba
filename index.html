@@ -4,8 +4,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #333;
+            font-family: Arial, sans-serif;
+            background-image: url('pozadina.jpg'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            height: 100vh;
+            width: 100%;
+        }
+        .top-bar {
+            background-color: #333;
+            width: 100%;
+            height: 6%;
+            position: fixed;
+            top: 0;
+           
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            height: 100%;
+        }
+        .top-bar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .top-bar ul li {
+            padding: 14px 20px;
+        }
+        .top-bar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .top-bar ul li a:hover {
+            color: red;
+        }
+        .container p {
+            width: 50px;
+            color: white;
+            display: inline;
+            position: relative;
+        }
+        .container a {
+            text-decoration: none;
+        }
+        .container p:hover {
+            color: #333;
+            transition: 1s;
+        }
+        .container p::before {
+            background-color: red;
+            display: block;
+            content: 'VERN '; 
+            width: 100%;
+            height: 0;
+            position: absolute;
+            top: -15px;
+            left: 0;
+            color: white;
+            font-size: 15px; 
+            text-align: justify;
+            line-height: 200px; 
+            transition: all 2s;
+            overflow: hidden;
+            z-index: 15; 
+        }
+        .container p:hover::before {
+            height: 200px; 
+        }
+        .na-slici {
+            position: relative;
+            margin-top: 6%; 
+        }
+        .na-slici h1 {
+            color: #333; 
+            text-transform: uppercase;
+            font-size: medium;
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            background-color: rgba(255, 255, 255, 0.7); 
+            border-radius: 10px; 
+            text-align: left; 
+            padding: 15px;
+            z-index: 10; 
+        }
+        .na-slici ul {
+            position: absolute;
+            top: 250px; 
+            left: 5%;
+            width: 10%;
+            height: 80px;
+            padding: 5px;
+            border: #333 solid;
+        }
+        .na-slici ul li {
+            background-color: rgba(255, 255, 255, 0.8); 
+            text-align: left; 
+            height: 25px;
+            z-index: 10; 
+            list-style: none;
+            margin-bottom: 15px;
+            color: #333;
+            text-align: left;
+            padding: 1px;
+            position: relative;
+        }
+        .na-slici ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+      
+        .gallery {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 80px;
+            justify-content: center;
+            padding-top: 55%;
+        }
+        .gallery img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.2s;
+        }
+        .gallery img:hover {
+            transform: scale(1.5);
+        }
+      .upisi{
+        margin-top: 100px;
+        position:relative;
+        width: 50%;
+        text-align: center;
+        height: 50px;
+        background-color: red;
+        margin-left: 25%;
+        justify-content: center;
+        padding-top: 5%;
+      }
+      .upisi a{
+       text-decoration: none;
+       color: white;
+       font-size: large;
+       text-transform: uppercase;
+      }
+     
+     
+    </style>
 </head>
 <body>
-    <h1>ovo je početna</h1>
+    <div class="top-bar">
+        <div class="container">
+            <a href="index.html"><p>VERN</p></a>
+            <ul>
+                <li><a target="_blank" href="https://eduneta.vern.hr/vern-student">Studomatic</a></li>
+                <li><a target="_blank" href="https://eduneta.vern.hr/vern-nastava">Nastaweb</a></li>
+                <li><a target="_blank" href="https://eduneta.vern.hr/vern-alumni">Alumni</a></li>
+                <li><a href="https://vern.hr/o-vernu/kontakti/">Kontakti</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="na-slici">
+        <h1>Inovativno i <br> poduzetničko <br> sveučilište</h1>
+        <ul>
+            <li><a target="_blank" href="https://vern.hr/o-vernu/">O VERN'U</a></li>
+            <li><a target="_blank" href="galerija.html">Izlet</a></li>
+        </ul>
+    </div>
+   
+    <div class="gallery">
+        <img src="P82-prostor-26-1-2021-1.jpg" alt="Image 1">
+        <img src="P82-prostor-26-1-2021-12.jpg" alt="Image 2">
+        <img src="P82-prostor-26-1-2021-2.jpg" alt="Image 3">
+    </div>
+    <div class="upisi"><a href="https://www.vern.hr/upisi/">Upisi i prijave</a></div>
 </body>
 </html>
