@@ -5,125 +5,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        :root{
-            --main_radius:5px;
-            --main-padding:5px;
+        :root {
+            --main_radius: 5px;
+            --main-padding: 5px;
             font-family: Arial, sans-serif;
         }
-        .container{
+
+        .container {
             display: grid;
             height: 100vh;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             grid-template-rows: 0.2fr 1.5fr 1.2fr 0.8fr;
-            grid-template-areas: 
+            grid-template-areas:
             'nav nav nav nav'
             'sidebar main main main'
             'sidebar content1 content2 content3'
             'sidebar content1 content2 content3';
             grid-gap: 0.2rem;
         }
-        nav{
+
+        nav {
             background-color: #333;
             grid-area: nav;
             color: white;
-            border-radius:var(--main_radius);
+            border-radius: var(--main_radius);
             padding: var(--main-padding);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        nav a{
+
+        nav a {
             text-decoration: none;
             color: white;
             text-align: left;
+            margin-right: 20px;
+            transition: color 0.3s ease;
         }
-        nav h1{
-            display:inline-grid;
-            text-align: right;
-            
+
+        nav a:hover {
+            color: #ddd;
         }
-        nav a:hover{
-            color: red;
-        }
-        #sidebar{
+
+        #sidebar {
             background-image: url(visoka.jpg);
             background-repeat: no-repeat;
             background-size: cover;
             grid-area: sidebar;
-            border-radius:var(--main_radius);
+            border-radius: var(--main_radius);
             padding: var(--main-padding);
         }
-        main{
+
+        main {
             background-color: #333;
             grid-area: main;
-            border-radius:var(--main_radius);
+            border-radius: var(--main_radius);
             padding: var(--main-padding);
             color: white;
         }
-        #content1{
-            background-image: url(jedan.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            grid-area: content1;
-            border-radius:var(--main_radius);
-            padding: var(--main-padding);
-        }
-        #content2{
-            background-image: url(dva.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            grid-area: content2;
-            border-radius:var(--main_radius);
-            padding: var(--main-padding);
-        }
-        #content3{
-            background-image: url(tri.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            grid-area: content3;
-            border-radius:var(--main_radius);
-            padding: var(--main-padding);
-        }
-       
-        @media (max-width:500px){
-            .container{
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-            grid-template-areas: 
-            'nav'
-            'main'
-            'content1'
-            'content2'
-            ;
-            }
-         #content1,#content2{
-            width: 100%;
-            height: 200px;
-            background-size: contain;
-         }
-         #content3{
-            display: none;
-         }
-    
-         
 
+        .content {
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: var(--main_radius);
+            padding: var(--main-padding);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: block;
+            cursor: pointer;
+        }
+
+        .content:hover {
+            transform: scale(1.05);
+            animation: zoom 0.5s ease-in-out both;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        input[type="checkbox"]:checked + .content {
+            position: fixed;
+            top: 25%;
+            left: 25%;
+            width: 50vw;
+            height: 50vh;
+            border-radius: 0;
+            transform: none;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        input[type="checkbox"]:checked + .content::after {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 24px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+            z-index: 20;
+        }
+
+        @keyframes zoom {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto auto;
+                grid-template-areas:
+                'nav'
+                'main'
+                'content1'
+                'content2'
+                'content3';
+            }
+
+            .content {
+                width: 100%;
+                height: 200px;
+                background-size: contain;
+                display: none; 
+            }
+
+            img {
+                width: 100%;
+                height: auto; 
+                border-radius: var(--main_radius);
+                display: block; 
+            }
+
+
+            #sidebar {
+                display: none;
+            }
+
+            input[type="checkbox"],
+            label[for="toggle1"], label[for="toggle2"], label[for="toggle3"] {
+                display: none;
+            }
+        }
+
+        
+        @media (min-width: 501px) {
+            img {
+                display: none; 
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <nav> <a href="index.html">VERN</a><h1>Galerija</h1> </nav>
+        <nav> 
+            <a href="index.html">VERN</a>
+            <h1>Galerija</h1> 
+        </nav>
         <main>
             <h1>Izlet Studenta Vern-a: Otkrijte Novo iskustvo</h1>
 
-Pridružite se studentima Vern-a na nezaboravnom izletu koji će vas odvesti u srce prirodnih ljepota i kulturnih bogatstava. Naša putovanja su dizajnirana da vam pruže jedinstvenu priliku da istražite nove destinacije, steknete nezaboravna iskustva i povežete se s prijateljima i kolegama.
-<br>
-<br> Zaplovite s nama u avanturu koja će vam omogućiti da istražite znamenitosti, uživate u lokalnoj kuhinji i upijete duh svakog mjesta koje posjetimo. Bez obzira jeste li ljubitelj prirodnih ljepota, povijesti ili avanturističkih aktivnosti, naš izlet prilagođava se svakom ukusu.
-<br>
-<br> Pridružite nam se na ovom izletu i stvorite uspomene koje će trajati cijeli život.
+            <p>Pridružite se studentima Vern-a na nezaboravnom izletu koji će vas odvesti u srce prirodnih ljepota i kulturnih bogatstava. Naša putovanja su dizajnirana da vam pruže jedinstvenu priliku da istražite nove destinacije, steknete nezaboravna iskustva i povežete se s prijateljima i kolegama.</p>
+            <p>Zaplovite s nama u avanturu koja će vam omogućiti da istražite znamenitosti, uživate u lokalnoj kuhinji i upijete duh svakog mjesta koje posjetimo. Bez obzira jeste li ljubitelj prirodnih ljepota, povijesti ili avanturističkih aktivnosti, naš izlet prilagođava se svakom ukusu.</p>
+            <p>Pridružite nam se na ovom izletu i stvorite uspomene koje će trajati cijeli život.</p>
         </main>
         <div id="sidebar"></div>
-        <div id="content1"></div>
-        <div id="content2"></div>
-        <div id="content3"></div>
-        
-      
+
+        <input type="checkbox" id="toggle1">
+        <label for="toggle1" class="content" style="background-image: url(jedan.jpg);"></label>
+
+        <input type="checkbox" id="toggle2">
+        <label for="toggle2" class="content" style="background-image: url(dva.jpg);"></label>
+
+        <input type="checkbox" id="toggle3">
+        <label for="toggle3" class="content" style="background-image: url(tri.jpg);"></label>
+
+       
+        <img src="jedan.jpg" alt="Image 1">
+        <img src="dva.jpg" alt="Image 2">
+        <img src="tri.jpg" alt="Image 3">
+    </div>
 </body>
 </html>
